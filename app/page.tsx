@@ -6,10 +6,10 @@ import { useState } from 'react';
 
 export default function Home() {
   const tabs = ['who we are', 'leadership', 'our volunteer team', 'milestones'];
-  const [currentTab, setTab] = useState(tabs[0]);
+  const [currentTab, setTab] = useState(tabs[tabs.length - 1]);
 
   return (
-    <div className='min-h-screen overflow-y'>
+    <div className='min-h-screen overflow-y bg-white'>
       <Image
         width={1440}
         height={540}
@@ -21,11 +21,10 @@ export default function Home() {
           <button
             key={tab}
             onClick={() => {
-              console.log(tab);
               setTab(tab);
             }}
-            className={`px-[15px] py-6 rounded-[8px] text-[16px] font-bold leading-[130%] text-[#0044B5] ${
-              currentTab === tab ? 'text-[#00B191]' : ''
+            className={`px-[15px] py-6 rounded-[8px] text-[16px] font-bold leading-[130%]  ${
+              currentTab === tab ? 'text-[#00B191]' : 'text-[#0044B5]'
             }`}
           >
             {tab.toUpperCase()}

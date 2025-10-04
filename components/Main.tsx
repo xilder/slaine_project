@@ -258,14 +258,15 @@ export default function Timeline() {
   // }, []);
 
   return (
-    <div className='relative min-h-screen bg-gray-50 flex flex-col justify-center pt-50 pb-30 px-20 text-center w-full gap-25'>
+    <div className='relative min-h-screen  flex flex-col justify-center pt-50 pb-30 px-20 text-center w-full gap-25'>
       {/* Center line */}
       <p className='font-bold text-[36px] leading-[130%]'>
         Since inception in 2019, Asido Foundation has led bold advocacy for
         mental health reforms. These range from public awareness campaigns to
         the passing of the 2021 Mental Health Act.
       </p>
-      <div className='flex flex-col w-full gap-25 mt-5'>
+      <div className='flex flex-col w-full gap-25 mt-5 relative'>
+        <div className='absolute left-1/2 top-0 bottom-0 w-[2px] bg-[#E7E9F5] -translate-x-1/2' />
         {events.map((event) => (
           <TimeBlock key={event.year.value} timeBlock={event} />
         ))}
@@ -276,11 +277,24 @@ export default function Timeline() {
 
 const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
   return (
-    <div className='w-full flex flex-col'>
+    <div className='w-full flex flex-col relative'>
+      <motion.div
+        className='absolute left-1/2 top-0 -translate-x-1/2 z-10 w-3 h-3 rounded-full my-4'
+        initial={{ scale: 0, backgroundColor: '#E7E9F5' }}
+        whileInView={{
+          scale: 1,
+          backgroundColor: '#0044B5',
+          boxShadow: '0 0 0 20px white',
+        }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.8 }}
+      />
       <div
         className={`w-1/2 ${
-          timeBlock.year.position === 'start' ? 'self-start' : 'self-end'
-        } font-extrabold leading-[150%] text-[39px]`}
+          timeBlock.year.position === 'start'
+            ? 'self-start pr-8'
+            : 'self-end pl-8'
+        } font-extrabold leading-[150%] text-[39px] text-left text-[#0044B5]`}
       >
         {timeBlock.year.value}
       </div>
@@ -289,8 +303,8 @@ const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
           <div
             key={item.heading}
             className={`flex flex-col gap-8 self-end ${
-              item.position === 'start' ? 'self-start' : 'self-end'
-            } lg:w-1/2`}
+              item.position === 'start' ? 'self-start pr-8' : 'self-end pl-8'
+            } lg:w-1/2 text-left`}
           >
             <motion.h4
               style={{ color: item.colour }}

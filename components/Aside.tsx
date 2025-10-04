@@ -20,7 +20,7 @@ const Aside = () => {
     },
   ];
   return (
-    <div className='pt-15 pb-30 px-auto flex flex-col gap-15'>
+    <div className='pt-15 pb-30 px-10 flex flex-col gap-15'>
       <h4 className='text-2xl font-semibold leading-[140%] text-[#00B191]'>
         Stay Informed
       </h4>
