@@ -257,14 +257,14 @@ export default function Timeline() {
   // }, []);
 
   return (
-    <div className='relative min-h-screen bg-gray-50 flex justify-center pt-50 pb-30 px-20 text-center w-full'>
+    <div className='relative min-h-screen bg-gray-50 flex flex-col justify-center pt-50 pb-30 px-20 text-center w-full'>
       {/* Center line */}
       <p className='font-bold text-[36px] leading-[130%]'>
         Since inception in 2019, Asido Foundation has led bold advocacy for
         mental health reforms. These range from public awareness campaigns to
         the passing of the 2021 Mental Health Act.
       </p>
-      <div className='flex flex-col w-full gap-25'>
+      <div className='flex flex-col w-full gap-25 border'>
         {events.map((event) => (
           <TimeBlock key={event.year.value} timeBlock={event} />
         ))}
