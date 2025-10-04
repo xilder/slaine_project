@@ -265,7 +265,7 @@ export default function Timeline() {
         mental health reforms. These range from public awareness campaigns to
         the passing of the 2021 Mental Health Act.
       </p>
-      <div className='flex flex-col w-full gap-25 - '>
+      <div className='flex flex-col w-full gap-25 mt-5'>
         {events.map((event) => (
           <TimeBlock key={event.year.value} timeBlock={event} />
         ))}
@@ -293,11 +293,12 @@ const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
             } lg:w-1/2`}
           >
             <motion.h4
+              style={{ color: item.colour }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
               viewport={{ once: true, amount: 0.4 }}
-              className={`font-semibold text-2xl leading-[140%] text-[${item.colour}]`}
+              className={`font-semibold text-2xl leading-[140%] `}
             >
               {item.heading}
             </motion.h4>
