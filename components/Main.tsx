@@ -289,7 +289,11 @@ const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         viewport={{ once: true, amount: 0.8 }}
       />
-      <div
+      <motion.h2
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.4 }}
         className={`w-1/2 ${
           timeBlock.year.position === 'start'
             ? 'self-start pr-8'
@@ -297,7 +301,7 @@ const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
         } font-extrabold leading-[150%] text-[39px] text-left text-[#0044B5]`}
       >
         {timeBlock.year.value}
-      </div>
+      </motion.h2>
       <div className='flex flex-col w-full gap-25'>
         {timeBlock.items.map((item) => (
           <div

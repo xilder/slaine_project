@@ -125,7 +125,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <hr className='absolute w-[1280] border border-[#ABABAB] top-[401px] mx-20' />
+      <hr className='absolute border border-[#ABABAB] top-[401px] left-20 right-20' />
       <p className='absolute font-medium text-base top-[421px] leading-[22px] left-20'>
         © 2025 Asido Foundation. All Rights Reserved.
       </p>

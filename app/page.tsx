@@ -16,7 +16,7 @@ export default function Home() {
         src={'/hero-image.png'}
         alt={'People watching a presentation'}
       />
-      <div className='mx-5 flex w-full items-center justify-start gap-[36px] md:gap-[56px]'>
+      <div className='mx-5 flex w-full items-center justify-center gap-[36px] lg:gap-[64px] mt-7'>
         {tabs.map((tab) => (
           <button
             key={tab}
