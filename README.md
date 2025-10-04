@@ -27,8 +27,8 @@ The app includes:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/xilder/slaine-project.git
-cd slaine-project
+git clone https://github.com/xilder/slaine_project.git
+cd slaine_project
 ```
 
 ### 2. Install dependencies

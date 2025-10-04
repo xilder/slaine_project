@@ -1,5 +1,6 @@
 'use client';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 interface TimelineItem {
   heading: string;
@@ -264,7 +265,7 @@ export default function Timeline() {
         mental health reforms. These range from public awareness campaigns to
         the passing of the 2021 Mental Health Act.
       </p>
-      <div className='flex flex-col w-full gap-25 border'>
+      <div className='flex flex-col w-full gap-25 '>
         {events.map((event) => (
           <TimeBlock key={event.year.value} timeBlock={event} />
         ))}
@@ -277,7 +278,9 @@ const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
   return (
     <div className='w-full flex flex-col'>
       <div
-        className={`w-1/2 self-${timeBlock.year.position} font-extrabold leading-[150%] text-[39px]`}
+        className={`w-1/2 ${
+          timeBlock.year.position === 'start' ? 'self-start' : 'self-end'
+        } font-extrabold leading-[150%] text-[39px]`}
       >
         {timeBlock.year.value}
       </div>
@@ -285,29 +288,55 @@ const TimeBlock = ({ timeBlock }: { timeBlock: TimelineBlock }) => {
         {timeBlock.items.map((item) => (
           <div
             key={item.heading}
-            className={`flex flex-col gap-8 self-${item.position}`}
+            className={`flex flex-col gap-8 self-end ${
+              item.position === 'start' ? 'self-start' : 'self-end'
+            } lg:w-1/2`}
           >
-            <h4
+            <motion.h4
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.4 }}
               className={`font-semibold text-2xl leading-[140%] text-[${item.colour}]`}
             >
               {item.heading}
-            </h4>
-            <p className='font-bold text-[25px] leading-[130%] text-[#202124]'>
+            </motion.h4>
+            <motion.p
+              className='font-bold text-[25px] leading-[130%] text-[#202124]'
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.4 }}
+            >
               {item.content}
-            </p>
+            </motion.p>
             {item.image && (
-              <Image
-                width={item.width}
-                height={item.height}
-                src={`/${item.image}`}
-                alt=''
-              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.4 }}
+              >
+                <Image
+                  width={item.width}
+                  height={item.height}
+                  src={`/${item.image}`}
+                  alt=''
+                  className='rounded-lg'
+                />
+              </motion.div>
             )}
             {item.button && (
-              <button className='flex gap-2 py-4 pr-6 rounded-[8px] font-bold text-base leading-[130%] items-center text-[#0044B5]'>
+              <motion.button
+                className='flex gap-2 py-4 pr-6 rounded-[8px] font-bold text-base leading-[130%] items-center text-[#0044B5]'
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+                viewport={{ once: true, amount: 0.4 }}
+              >
                 <p>{'learn more'.toUpperCase()}</p>
                 <ChevronRight />
-              </button>
+              </motion.button>
             )}
           </div>
         ))}
